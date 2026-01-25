@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meat Spoilage Detection</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<marquee>
+🥩 AI-Powered Meat Spoilage Detection • Food Safety First • Fresh | Half Spoiled | Spoiled 🥩
+</marquee>
+
+<div class="main-container">
+
+  <!-- UPLOAD PANEL -->
+  <div class="panel column">
+    <div class="panel-header">
+      <i class="fas fa-cloud-upload-alt"></i>
+      <h2>Upload Meat Image</h2>
+    </div>
+
+    <div class="panel-body">
+      <input type="file" id="imageInput" accept="image/*">
+      <button onclick="uploadImage()">Analyze Meat</button>
+
+      <div class="hint">
+        <i class="fas fa-lightbulb"></i>
+        Tip: Use a clear image under good lighting
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <div class="badge">📷 Image-based AI</div>
+      <div class="badge">⚡ Instant Results</div>
+    </div>
+  </div>
+
+  <!-- PREVIEW PANEL -->
+  <div class="panel column">
+    <div class="panel-header">
+      <i class="fas fa-image"></i>
+      <h2>Live Preview</h2>
+    </div>
+
+    <div class="panel-body">
+      <img id="previewImage" alt="Preview">
+    </div>
+
+    <div class="panel-footer">
+      <div class="pulse-text">Waiting for image upload…</div>
+    </div>
+  </div>
+
+  <!-- RESULT PANEL -->
+  <div class="panel column result-panel" id="resultPanel">
+    <div class="panel-header">
+      <i class="fas fa-microscope"></i>
+      <h2>Freshness Verdict</h2>
+    </div>
+
+    <div class="panel-body">
+      <div id="verdict" class="verdict">—</div>
+      <div id="confidence"></div>
+      <div id="usageMessage"></div>
+
+      <ul class="checklist">
+        <li><i class="fas fa-check-circle"></i> Color analysis</li>
+        <li><i class="fas fa-check-circle"></i> Texture patterns</li>
+        <li><i class="fas fa-check-circle"></i> Spoilage indicators</li>
+      </ul>
+    </div>
+
+    <div class="panel-footer">
+      <div class="status-card green">🟢 Safe</div>
+      <div class="status-card orange">🟠 Caution</div>
+      <div class="status-card red">🔴 Unsafe</div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
