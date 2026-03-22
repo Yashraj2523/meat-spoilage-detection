@@ -7,7 +7,6 @@ import os
 
 app = FastAPI(title="Meat Spoilage Detection API")
 
-# CORS (for frontend)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -15,12 +14,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load model
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "meat_freshness_model.h5")
 model = tf.keras.models.load_model(MODEL_PATH)
 
-# Class labels
 classes = ["Fresh", "Half Spoiled", "Spoiled"]
 
 def preprocess_image(image_bytes):

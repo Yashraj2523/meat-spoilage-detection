@@ -8,27 +8,17 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# -----------------------------
-# Load Model
-# -----------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "meat_freshness_model.h5")
 
 model = tf.keras.models.load_model(MODEL_PATH)
 
-# -----------------------------
-# CLASS LABELS (3 classes)
-# IMPORTANT: Order must match training
-# -----------------------------
 classes = [
     "Fresh",
     "Half Spoiled",
     "Spoiled"
 ]
 
-# -----------------------------
-# Image Preprocessing
-# -----------------------------
 def preprocess_image(image_bytes):
     npimg = np.frombuffer(image_bytes, np.uint8)
     img = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
@@ -43,9 +33,6 @@ def preprocess_image(image_bytes):
 
     return img
 
-# -----------------------------
-# Prediction API
-# -----------------------------
 @app.route("/predict", methods=["POST"])
 def predict():
     if "image" not in request.files:
@@ -68,8 +55,5 @@ def predict():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# -----------------------------
-# Run Server
-# -----------------------------
 if __name__ == "__main__":
     app.run(debug=True)
